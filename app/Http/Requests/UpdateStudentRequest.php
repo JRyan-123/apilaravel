@@ -11,7 +11,7 @@ class UpdateStudentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class UpdateStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'          => 'required|string|max:100',
+            'year_level'    => 'required|in:1,2,3,4',
+            'section'       => 'required|in:A,B,C',
         ];
+    }
+    
+    /**
+     * Customized error messages
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'year_level.in' => 'The year level must be 1, 2, 3, or 4.',
+            'section.in' => 'The section must be A, B, or C.',
+        ];        
     }
 }

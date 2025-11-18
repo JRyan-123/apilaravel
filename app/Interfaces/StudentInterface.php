@@ -2,11 +2,12 @@
 
 namespace App\Interfaces;
 
+use App\Models\Student;
+
 interface StudentInterface
 {
     public function getAll();
-    public function getById(int $id);
-    public function createNewStudent(array $data);
-    // public function getById();
+    public function create(array $data);
+    public function update(Student $student, array $data);
     // public function getById();
 }

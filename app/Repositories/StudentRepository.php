@@ -22,19 +22,29 @@ class StudentRepository implements StudentInterface
         return $this->student->all();
     }
 
-    /**
-     * find student by ID
-     *
-     * @param integer $id
-     * @return Model
-     */
-    public function getById(int $id)
-    {
-        return $this->student->findOrFail($id);
-    }
 
-    public function createNewStudent(array $data)
+    /**
+     * Create new student record
+     *
+     * @param array $data
+     * @return void
+     */
+    public function create(array $data)
     {
         return $this->student->create($data);
+    }
+
+    
+    /**
+     * Update selected record
+     *
+     * @param Student $student
+     * @param array $data
+     * @return Model
+     */
+    public function update(Student $student, array $data)
+    {
+        $student->update($data);
+        return $student;
     }
 }

@@ -25,7 +25,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student = $this->student->getAll();
+        $student_data = $this->student->getAll();
         return $this->success(StudentResource::collection($student),'Fetch all data successfully');
     }
 
@@ -42,7 +42,7 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        $student = $this->student->createNewStudent($request->validated());
+        $student_data = $this->student->create($request->validated());
         return $this->success(new StudentResource($student), 'Created Successfully');
     }
 
@@ -67,7 +67,8 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        $student_data = $this->student->update($student, $request->validated());
+        return $this->success(new StudentResource($student), 'Student updated!');
     }
 
     /**
