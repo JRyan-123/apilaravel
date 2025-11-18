@@ -26,7 +26,7 @@ class StudentController extends Controller
     public function index()
     {
         $student = $this->student->getAll();
-        return $this->success(StudentResource::collection($student),'Success');
+        return $this->success(StudentResource::collection($student),'Fetch all data successfully');
     }
 
     /**
@@ -42,7 +42,8 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        //
+        $student = $this->student->createNewStudent($request->validated());
+        return $this->success(new StudentResource($student), 'Created Successfully');
     }
 
     /**

@@ -13,12 +13,28 @@ class StudentRepository implements StudentInterface
     public function __construct(protected Student $student) {}
 
     /**
-     * fetch all student model
+     * Get all students
      *
-     * @return models
+     * @return Collection
      */
     public function getAll()
     {
         return $this->student->all();
+    }
+
+    /**
+     * find student by ID
+     *
+     * @param integer $id
+     * @return Model
+     */
+    public function getById(int $id)
+    {
+        return $this->student->findOrFail($id);
+    }
+
+    public function createNewStudent(array $data)
+    {
+        return $this->student->create($data);
     }
 }
