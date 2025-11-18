@@ -51,7 +51,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+         return $this->success(new StudentResource($student), 'Student fetch successfully');
     }
 
     /**
