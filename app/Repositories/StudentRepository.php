@@ -34,7 +34,7 @@ class StudentRepository implements StudentInterface
         return $this->student->create($data);
     }
 
-    
+
     /**
      * Update selected record
      *
@@ -46,5 +46,10 @@ class StudentRepository implements StudentInterface
     {
         $student->update($data);
         return $student;
+    }
+
+    public function delete(Student $student)
+    {
+        return $student->delete();
     }
 }

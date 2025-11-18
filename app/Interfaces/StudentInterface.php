@@ -9,5 +9,6 @@ interface StudentInterface
     public function getAll();
     public function create(array $data);
     public function update(Student $student, array $data);
-    // public function getById();
+    public function delete(Student $student);
+    
 }

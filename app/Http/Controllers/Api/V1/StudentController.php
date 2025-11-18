@@ -26,7 +26,7 @@ class StudentController extends Controller
     public function index()
     {
         $student_data = $this->student->getAll();
-        return $this->success(StudentResource::collection($student),'Fetch all data successfully');
+        return $this->success(StudentResource::collection($student_data),'Fetch all data successfully');
     }
 
     /**
@@ -43,7 +43,7 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $student_data = $this->student->create($request->validated());
-        return $this->success(new StudentResource($student), 'Created Successfully');
+        return $this->success(new StudentResource($student_data), 'Created Successfully');
     }
 
     /**
@@ -68,7 +68,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $student_data = $this->student->update($student, $request->validated());
-        return $this->success(new StudentResource($student), 'Student updated!');
+        return $this->success(new StudentResource($student_data), 'Student updated!');
     }
 
     /**
@@ -76,6 +76,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $this->student->delete($student);
+        return $this->success([], 'Deleted success');
     }
 }
