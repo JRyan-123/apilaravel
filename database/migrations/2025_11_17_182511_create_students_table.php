@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
              $table->string('name')->nullable();
-            $table->enum('year_level',['1','2','3']);
-            $table->string('section');
+            $table->enum('level',['1','2','3','4']);
+            $table->enum('class',['A','B','C']);
             $table->timestamps();
         });
     }

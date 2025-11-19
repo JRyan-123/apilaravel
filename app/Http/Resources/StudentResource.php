@@ -16,7 +16,7 @@ class StudentResource extends JsonResource
     {
         return [
             'Student Name'  =>  $this->name,
-            'Year - Section'  =>  $this->year_level ." - ". $this->section
+            'Year - Class'  =>  $this->level ." - ". $this->class
         ];
     }
 }

@@ -23,8 +23,8 @@ class UpdateStudentRequest extends FormRequest
     {
         return [
             'name'          => 'required|string|max:100',
-            'year_level'    => 'required|in:1,2,3,4',
-            'section'       => 'required|in:A,B,C',
+            'level'    => 'required|in:1,2,3,4',
+            'class'       => 'required|in:A,B,C',
         ];
     }
     
@@ -36,8 +36,8 @@ class UpdateStudentRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'year_level.in' => 'The year level must be 1, 2, 3, or 4.',
-            'section.in' => 'The section must be A, B, or C.',
+            'level.in' => 'The year level must be 1, 2, 3, or 4.',
+            'class.in' => 'The section must be A, B, or C.',
         ];        
     }
 }
