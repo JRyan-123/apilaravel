@@ -23,6 +23,11 @@ class StudentRepository implements StudentInterface
     }
 
 
+    public function paginate(int $perPage = 10)
+    {
+        return $this->student->paginate($perPage);
+    }
+
     /**
      * Create new student record
      *
@@ -48,6 +53,12 @@ class StudentRepository implements StudentInterface
         return $student;
     }
 
+    /**
+     * delete a student record
+     *
+     * @param Student $student
+     * @return void
+     */
     public function delete(Student $student)
     {
         return $student->delete();

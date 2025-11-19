@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateStudentRequest;
 use App\Http\Resources\StudentResource;
 use App\Interfaces\StudentInterface;
 use App\Traits\ApiResponseTrait;
+use Symfony\Component\HttpFoundation\Request;
 
 class StudentController extends Controller
 {
@@ -23,9 +24,10 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $student_data = $this->student->getAll();
+    public function index(Request $request)
+    {   
+        $perPage = $request->get('per_page', 10);
+        $student_data = $this->student->paginate($perPage);
         return $this->success(StudentResource::collection($student_data),'Fetch all data successfully');
     }
 
